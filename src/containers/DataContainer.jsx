@@ -33,6 +33,9 @@ export default class DataContainer extends Component {
         {data.results.map((item) =>
         <ul>
           <li> {item.gender} </li>
+          <li> {item.name.first} </li>
+          <li> {item.registered.age} </li>
+          <li> {item.email} </li>
         </ul>
         )}
       </div>
