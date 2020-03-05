@@ -9,11 +9,11 @@ export default class DataContainer extends Component {
   fetchData = () => {
     
     let url = 'https://randomuser.me/api/?page=1&results=10&seed=abc&nat=fr';
-      console.log(url);
       
       Axios.get(url)
-      .then(response => console.log(response))
-      .catch(error => console.log(error)); 
+      
+      .then(response => this.setState({data: response.data}))
+      .catch(error => console.log(error));
   }
 
   componentDidMount = () => {
@@ -21,8 +21,16 @@ export default class DataContainer extends Component {
   }
 
   render = () => {
-    return (this.fetchData)
-       
+    const {data} = this.state
+    return (
+      <div>
+        {data.results.map((item) =>
+        <ul>
+          <li> {data.item.gender} </li>
+        </ul>
+        )}
+      </div>
+      )   
   }
 
 }
