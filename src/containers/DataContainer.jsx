@@ -11,9 +11,9 @@ export default class DataContainer extends Component {
     let url = 'https://randomuser.me/api/?page=1&results=10&seed=abc&nat=fr';
       
       Axios.get(url)
-      
       .then(response => this.setState({data: response.data}))
       .catch(error => console.log(error));
+      
   }
 
   componentDidMount = () => {
@@ -21,12 +21,18 @@ export default class DataContainer extends Component {
   }
 
   render = () => {
-    const {data} = this.state
+    const { data } = this.state;
+
+    if (!data) {
+      return <div>Loading ...........</div>;
+    }
+    console.log(data);
+    
     return (
       <div>
         {data.results.map((item) =>
         <ul>
-          <li> {data.item.gender} </li>
+          <li> {item.gender} </li>
         </ul>
         )}
       </div>
